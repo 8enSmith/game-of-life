@@ -2,6 +2,27 @@
   text-align: center;
 }
 
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td {
+  border: 1px solid #ddd;
+  height: 1em;
+  width: 1em;
+}
+
+.alive {
+  background: blueviolet;
+}
+
+/* Width to match app grid size */
+.container {
+  margin: 1.5em auto;
+  max-width: 40em;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
