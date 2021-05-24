@@ -50,4 +50,13 @@ describe('When App renders', () => {
       expect((input as HTMLInputElement).value).toBe('0');
     });
   });
+
+  describe('Clicking on a cell in the grid', () => {
+    it('should work as expected', async () => {
+      const { findByLabelText } = render(<App />);
+      const cellToTest = await findByLabelText('0_0_dead');
+      fireEvent.click(cellToTest);
+      expect(await findByLabelText('0_0_alive')).toBeInTheDocument();
+    });
+  });
 });
