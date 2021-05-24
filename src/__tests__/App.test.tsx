@@ -43,10 +43,10 @@ describe('When App renders', () => {
       expect((input as HTMLInputElement).value).toBe('500');
     });
 
-    it('should display zero when all numbers deleted', () => {
+    it('should display zero when slider moved to minimum value', async () => {
       const { getByLabelText } = render(<App />);
       const input = getByLabelText('timeout-interval', {});
-      fireEvent.input(input, { target: { value: '' } });
+      fireEvent.input(input, { target: { value: '0' } });
       expect((input as HTMLInputElement).value).toBe('0');
     });
   });

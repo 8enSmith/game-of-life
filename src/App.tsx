@@ -60,16 +60,20 @@ const App = () => {
         </button>
         <Grid board={board} updateBoard={setBoard} />
         <div>{`Iteration ${iteration}`}</div>
-        <input
-          aria-label="timeout-interval"
-          type="number"
-          value={timeoutInterval}
-          min={0}
-          max={2500}
-          onInput={(event) => {
-            setTimeoutInterval(parseInt(event.currentTarget.value, 10) || 0);
-          }}
-        />
+        <div>
+          <input
+            aria-label="timeout-interval"
+            type="range"
+            value={timeoutInterval}
+            min={0}
+            max={2000}
+            step={20}
+            onChange={(event) => {
+              setTimeoutInterval(parseInt(event.currentTarget.value, 10) || 0);
+            }}
+          />
+          <label>{timeoutInterval}</label>
+        </div>
       </header>
     </div>
   );
