@@ -18,19 +18,36 @@ describe('When App renders', () => {
     it('stop should work as expected', async () => {
       const { getByText } = render(<App />);
       fireEvent.click(getByText('Pause'));
+      expect(getByText('Start')).toBeInTheDocument();
     });
 
     it('reset should work as expected', async () => {
       const { getByText } = render(<App />);
 
       // Set timeout to 3 seconds as the default value is 1 second.
-      await waitFor(() => getByText('Iteration 2'), {
+      await waitFor(() => getByText('Iteration 1'), {
         timeout: 3000,
       });
 
       fireEvent.click(getByText('Reset'));
 
-      expect(getByText('Iteration 1')).toBeInTheDocument();
+      expect(getByText('Iteration 0')).toBeInTheDocument();
+    });
+  });
+
+  describe('the time interval input', () => {
+    it('should work as expected', () => {
+      const { getByLabelText } = render(<App />);
+      const input = getByLabelText('timeout-interval');
+      fireEvent.input(input, { target: { value: '500' } });
+      expect((input as HTMLInputElement).value).toBe('500');
+    });
+
+    it('should display zero when all numbers deleted', () => {
+      const { getByLabelText } = render(<App />);
+      const input = getByLabelText('timeout-interval', {});
+      fireEvent.input(input, { target: { value: '' } });
+      expect((input as HTMLInputElement).value).toBe('0');
     });
   });
 });

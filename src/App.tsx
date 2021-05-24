@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 
-import './App.css';
+import './App.scss';
 import Board from './engine/board';
 import Grid from './Grid';
 import { useInterval } from './useInterval';
 
 const DEFAULT_TIMEOUT_INTERVAL = 1000;
+const DEFAULT_ITERATION = 0;
 
-const _board = new Board(15, 15);
+const _board = new Board(40, 60);
 
 // TODO Write fn to randomly seed the board
 _board.seedCells([
@@ -28,7 +29,7 @@ _board.seedCells([
 const App = () => {
   const [board, setBoard] = useState(_board);
   const [isRunning, setIsRunning] = useState(true);
-  const [iteration, setIteration] = useState(1);
+  const [iteration, setIteration] = useState(DEFAULT_ITERATION);
   const [timeoutInterval, setTimeoutInterval] = useState<number>(
     DEFAULT_TIMEOUT_INTERVAL
   );
@@ -52,7 +53,7 @@ const App = () => {
             setIsRunning(false);
             setTimeoutInterval(DEFAULT_TIMEOUT_INTERVAL);
             setBoard(_board);
-            setIteration(1);
+            setIteration(DEFAULT_ITERATION);
           }}
         >
           Reset
@@ -60,6 +61,7 @@ const App = () => {
         <Grid board={board} updateBoard={setBoard} />
         <div>{`Iteration ${iteration}`}</div>
         <input
+          aria-label="timeout-interval"
           type="number"
           value={timeoutInterval}
           min={0}
