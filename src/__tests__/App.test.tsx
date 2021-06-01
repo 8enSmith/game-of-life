@@ -10,19 +10,21 @@ describe('When App renders', () => {
     });
 
     it('correct iteration value', async () => {
-      expect(await screen.findByText('Iteration 1')).toBeTruthy();
+      expect(await screen.findByText('Iteration 0')).toBeTruthy();
     });
   });
 
   describe('The button', () => {
     it('stop should work as expected', async () => {
       const { getByText } = render(<App />);
-      fireEvent.click(getByText('Pause'));
-      expect(getByText('Start')).toBeInTheDocument();
+      fireEvent.click(getByText('Start'));
+      expect(getByText('Pause')).toBeInTheDocument();
     });
 
     it('reset should work as expected', async () => {
       const { getByText } = render(<App />);
+
+      fireEvent.click(getByText('Start'));
 
       // Set timeout to 3 seconds as the default value is 1 second.
       await waitFor(() => getByText('Iteration 1'), {
@@ -51,12 +53,13 @@ describe('When App renders', () => {
     });
   });
 
-  describe('Clicking on a cell in the grid', () => {
-    it('should work as expected', async () => {
-      const { findByLabelText } = render(<App />);
-      const cellToTest = await findByLabelText('0_0_dead');
-      fireEvent.click(cellToTest);
-      expect(await findByLabelText('0_0_alive')).toBeInTheDocument();
+  describe('Clicking on a dead cell in the grid', () => {
+    it('should bring it back to life', async () => {
+      const { findAllByLabelText } = render(<App />);
+      const deadCells = await findAllByLabelText(/dead/);
+      const sut = deadCells[0];
+      fireEvent.click(sut);
+      expect(sut.getAttribute('class')).toBe('alive');
     });
   });
 });

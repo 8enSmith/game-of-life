@@ -21,18 +21,20 @@ class Board {
 
   toggleCellState = (rowIndex: number, colIndex: number) => {
     const board = { ...this };
-    board.cells[rowIndex][colIndex].isAlive = !board.cells[rowIndex][colIndex]
-      .isAlive;
+    board.cells[rowIndex][colIndex].isAlive =
+      !board.cells[rowIndex][colIndex].isAlive;
     return board;
   };
 
   seedCells = (cellCoordinates: Array<ICoordinates>) => {
+    const board = { ...this };
     cellCoordinates.forEach((coordinates: ICoordinates) => {
-      this.cells[coordinates.row][coordinates.col] = changeCellState(
-        this.cells[coordinates.row][coordinates.col],
+      board.cells[coordinates.row][coordinates.col] = changeCellState(
+        board.cells[coordinates.row][coordinates.col],
         true
       );
     });
+    return board;
   };
 
   newEpoch = () => {
