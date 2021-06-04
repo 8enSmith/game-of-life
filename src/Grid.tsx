@@ -18,8 +18,8 @@ const Grid = ({ board, updateBoard }: IProps) => (
               key={`${rowIndex}_${colIndex}`}
               {...(col.isAlive && { className: 'alive' })}
               onClick={() => {
-                const newBoard = board.toggleCellState(rowIndex, colIndex);
-                updateBoard(newBoard);
+                const updatedBoard = board.toggleCellState(rowIndex, colIndex);
+                updateBoard(updatedBoard);
               }}
             ></td>
           ))}

@@ -5,17 +5,18 @@ import Board from './engine/board';
 import Cell from './engine/cell';
 import Grid from './Grid';
 import { useInterval } from './useInterval';
+import Chance from 'chance';
 
 const DEFAULT_TIMEOUT_INTERVAL = 200;
 const DEFAULT_ITERATION = 0;
 
 const createInitialBoard = () => {
-  const _board = new Board(50, 100);
+  const _board = new Board(40, 100);
+  const chance = new Chance();
 
   for (let row = 0; row < _board.cells.length; row++) {
     for (let col = 0; col < _board.cells[row].length; col++) {
-      var randomLifeState = Math.random() < 0.5;
-      _board.cells[row][col] = new Cell(row, col, randomLifeState);
+      _board.cells[row][col] = new Cell(row, col, chance.bool());
     }
   }
 
@@ -42,38 +43,37 @@ const App = () => {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <Grid board={board} updateBoard={setBoard} />
-        <div>
-          <button onClick={() => setIsRunning(!isRunning)}>
-            {isRunning ? 'Pause' : 'Start'}
-          </button>
-          <button
-            onClick={() => {
-              setIsRunning(false);
-              setTimeoutInterval(DEFAULT_TIMEOUT_INTERVAL);
-              setBoard(createInitialBoard());
-              setIteration(DEFAULT_ITERATION);
-            }}
-          >
-            Reset
-          </button>
-          <input
-            id="timeoutInterval"
-            aria-label="timeout-interval"
-            type="range"
-            value={timeoutInterval}
-            min={0}
-            max={2000}
-            step={20}
-            onChange={(event) => {
-              setTimeoutInterval(parseInt(event.currentTarget.value, 10) || 0);
-            }}
-          />
-          <label>{`${timeoutInterval} ms`}</label>
-          <div>{`Iteration ${iteration}`}</div>
-        </div>
-      </header>
+      <h1>Game of Life</h1>
+      <Grid board={board} updateBoard={setBoard} />
+      <div>
+        <button onClick={() => setIsRunning(!isRunning)}>
+          {isRunning ? 'Pause' : 'Start'}
+        </button>
+        <button
+          onClick={() => {
+            setIsRunning(false);
+            setTimeoutInterval(DEFAULT_TIMEOUT_INTERVAL);
+            setBoard(createInitialBoard());
+            setIteration(DEFAULT_ITERATION);
+          }}
+        >
+          Reset
+        </button>
+        <input
+          id="timeoutInterval"
+          aria-label="timeout-interval"
+          type="range"
+          value={timeoutInterval}
+          min={0}
+          max={2000}
+          step={20}
+          onChange={(event) => {
+            setTimeoutInterval(parseInt(event.currentTarget.value, 10) || 0);
+          }}
+        />
+        <label>{`${timeoutInterval} ms`}</label>
+        <div>{`Iteration ${iteration}`}</div>
+      </div>
     </div>
   );
 };
