@@ -42,14 +42,17 @@ const App = () => {
   );
 
   return (
-    <div className="App">
-      <h1>Game of Life</h1>
-      <Grid board={board} updateBoard={setBoard} />
-      <div>
-        <button onClick={() => setIsRunning(!isRunning)}>
+    <div className="container">
+      <h1 className="title">Game of Life</h1>
+      <div className="grid">
+        <Grid board={board} updateBoard={setBoard} />
+      </div>
+      <div className="buttons">
+        <button onClick={() => setIsRunning(!isRunning)} className="start">
           {isRunning ? 'Pause' : 'Start'}
         </button>
         <button
+          className="reset"
           onClick={() => {
             setIsRunning(false);
             setTimeoutInterval(DEFAULT_TIMEOUT_INTERVAL);
@@ -59,20 +62,24 @@ const App = () => {
         >
           Reset
         </button>
-        <input
-          id="timeoutInterval"
-          aria-label="timeout-interval"
-          type="range"
-          value={timeoutInterval}
-          min={0}
-          max={2000}
-          step={20}
-          onChange={(event) => {
-            setTimeoutInterval(parseInt(event.currentTarget.value, 10) || 0);
-          }}
-        />
-        <label>{`${timeoutInterval} ms`}</label>
-        <div>{`Iteration ${iteration}`}</div>
+        <div className="interval">
+          <input
+            id="timeoutInterval"
+            aria-label="timeout-interval"
+            type="range"
+            value={timeoutInterval}
+            min={0}
+            max={2000}
+            step={20}
+            onChange={(event) => {
+              setTimeoutInterval(parseInt(event.currentTarget.value, 10) || 0);
+            }}
+          />
+          <label>{`${timeoutInterval} ms`}</label>
+        </div>
+        <div className="iteration">
+          <div>{`Iteration ${iteration}`}</div>
+        </div>
       </div>
     </div>
   );

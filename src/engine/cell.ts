@@ -14,13 +14,9 @@ export const determineCellState = (cell: Cell, board: Board) => {
     if (numberOfLivingNeighbours === 2 || numberOfLivingNeighbours === 3) {
       return true;
     }
-  } else {
-    if (numberOfLivingNeighbours === 3) {
-      return true;
-    }
   }
 
-  return false;
+  return numberOfLivingNeighbours === 3 ? true : false;
 };
 
 export const getLivingNeighbours = (cell: Cell, board: Board) => {
