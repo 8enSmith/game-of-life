@@ -1,4 +1,4 @@
-import Cell, { changeCellState, determineCellState } from './cell';
+import Cell, { changeCellState, isCellAlive } from './cell';
 import { ICoordinates } from './interfaces';
 
 class Board {
@@ -42,7 +42,7 @@ class Board {
 
     for (let row = 0; row < this.cells.length; row++) {
       for (let col = 0; col < this.cells[row].length; col++) {
-        const isAlive = determineCellState(this.cells[row][col], this);
+        const isAlive = isCellAlive(this.cells[row][col], this);
         newBoard.cells[row][col] = new Cell(row, col, isAlive);
       }
     }

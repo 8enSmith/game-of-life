@@ -1,5 +1,5 @@
 import Board from '../../engine/board';
-import Cell, { changeCellState, determineCellState } from '../../engine/cell';
+import Cell, { changeCellState, isCellAlive } from '../../engine/cell';
 
 describe('A cell', () => {
   it('can be made alive', () => {
@@ -25,7 +25,7 @@ describe('A cell', () => {
 
       cell = changeCellState(cell, true);
 
-      expect(determineCellState(cell, board)).toEqual(false);
+      expect(isCellAlive(cell, board)).toEqual(false);
     });
 
     test('2 or 3 live neighbours lives on to the next generation', () => {
@@ -45,7 +45,7 @@ describe('A cell', () => {
         },
       ]);
 
-      expect(determineCellState(board.cells[1][0], board)).toEqual(true);
+      expect(isCellAlive(board.cells[1][0], board)).toEqual(true);
     });
 
     test('A cell with more than 3 live neighbours dies of overcrowding', () => {
@@ -92,8 +92,8 @@ describe('A cell', () => {
         },
       ]);
 
-      determineCellState(board.cells[0][0], board);
-      expect(determineCellState(board.cells[0][0], board)).toEqual(true);
+      isCellAlive(board.cells[0][0], board);
+      expect(isCellAlive(board.cells[0][0], board)).toEqual(true);
     });
   });
 });

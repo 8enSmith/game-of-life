@@ -5,7 +5,7 @@ export const changeCellState = (
   isAlive: boolean
 ) => new Cell(rowIndex, colIndex, isAlive);
 
-export const determineCellState = (cell: Cell, board: Board) => {
+export const isCellAlive = (cell: Cell, board: Board) => {
   const numberOfLivingNeighbours = getLivingNeighbours(cell, board);
 
   if (cell.isAlive) {
