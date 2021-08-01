@@ -1,6 +1,43 @@
-# Getting Started with Create React App
+[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
+
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
+# Game of Life
+
+This project is an implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) using TypeScript and React.
+
+> The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970. It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves.
+
+The cells on the board conform to the following rules:
+
+- A cell can be made "alive"
+- A cell can be "killed"
+- A cell with fewer than two live neighbours dies of under-population
+- A cell with 2 or 3 live neighbours lives on to the next generation
+- A cell with more than 3 live neighbours dies of overcrowding
+- An empty cell with exactly 3 live neighbours "comes to life"
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Getting Started
+
+Clone the project:
+
+```zsh
+  git clone https://github.com/8enSmith/game-of-life.git
+```
+
+Go to the project directory:
+
+```zsh
+  cd game-of-life
+```
+
+Install dependencies:
+
+```zsh
+  yarn
+```
 
 ## Available Scripts
 
@@ -44,3 +81,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
