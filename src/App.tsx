@@ -63,6 +63,7 @@ const App = () => {
           Reset
         </button>
         <div className="interval">
+          <div>Board update period</div>
           <input
             id="timeoutInterval"
             aria-label="timeout-interval"

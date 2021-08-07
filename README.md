@@ -2,6 +2,8 @@
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bb5c7fa3-de10-4bd2-a1ef-bac60f78a338/deploy-status)](https://app.netlify.com/sites/game-of-1ife/deploys)
+
 # Game of Life
 
 This project is an implementation of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) using TypeScript and React.
@@ -16,6 +18,12 @@ The cells on the board conform to the following rules:
 - A cell with 2 or 3 live neighbours lives on to the next generation
 - A cell with more than 3 live neighbours dies of overcrowding
 - An empty cell with exactly 3 live neighbours "comes to life"
+
+A user can manually toggle a cell to be dead or alive by clicking on the board.
+
+The board evolution can be paused/started using the "Pause"/"Start" button. The board can also be reset using the "Reset" button.
+
+You can see the app [here](https://game-of-1ife.netlify.app).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
