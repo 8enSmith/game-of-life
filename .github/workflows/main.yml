@@ -37,5 +37,5 @@ jobs:
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   package-manager: yarn
-                  test-script: yarn test -- --silent --ci --coverage --coverageReporters="text" --coverageReporters="text-summary"
+                  test-script: yarn test --coverage
                   threshold: 90
