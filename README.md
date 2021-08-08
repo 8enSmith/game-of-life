@@ -23,7 +23,7 @@ A user can manually toggle a cell to be dead or alive by clicking on the board.
 
 The board evolution can be paused/started using the "Pause"/"Start" button. The board can also be reset using the "Reset" button.
 
-You can see the app [here](https://game-of-1ife.netlify.app).
+An instance of this application is here: https://game-of-1ife.netlify.app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
