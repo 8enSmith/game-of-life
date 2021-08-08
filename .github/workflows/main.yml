@@ -38,4 +38,4 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           package-manager: yarn
           test-script: npm run test:coverage
-          threshold: 90
+          threshold: 85
