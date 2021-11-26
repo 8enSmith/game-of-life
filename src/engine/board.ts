@@ -38,7 +38,7 @@ class Board {
   };
 
   newEpoch = () => {
-    let newBoard = new Board(this.rowCount, this.colCount);
+    const newBoard = new Board(this.rowCount, this.colCount);
 
     for (let row = 0; row < this.cells.length; row++) {
       for (let col = 0; col < this.cells[row].length; col++) {
