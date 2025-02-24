@@ -25,8 +25,6 @@ The board evolution can be paused/started using the "Pause"/"Start" button. The 
 
 An instance of this application is here: https://game-of-1ife.netlify.app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Getting Started
 
 Clone the project:
